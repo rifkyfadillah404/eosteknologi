@@ -19,7 +19,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[color:var(--accent)]/20 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-[linear-gradient(to_right,rgba(37,150,190,0.12),rgba(255,255,255,0.92))] shadow-md">
       <div className="mx-auto max-w-6xl px-6">
-          <div className="flex items-center justify-between py-3">
+          <div className="relative flex items-center justify-between py-3">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/assets/logo/eos.png"
@@ -32,7 +32,7 @@ export function Navbar() {
               <span className="text-sm font-semibold text-slate-900">EOS Teknologi</span>
             </Link>
 
-          <nav className="hidden gap-1 md:flex">
+          <nav className="hidden md:flex gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
