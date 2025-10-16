@@ -4,9 +4,9 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-slate-200 bg-white/80">
+    <footer className="mt-10 border-t border-[color:var(--accent)]/20 bg-[linear-gradient(180deg,rgba(37,150,190,0.08),rgba(255,255,255,0.96))]">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="py-10">
+        <div className="py-12">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -19,16 +19,16 @@ export function Footer() {
                 />
                 <div>
                   <p className="text-sm font-semibold text-slate-900">EOS Teknologi</p>
-                  <p className="text-xs text-slate-500">Manufacturing System Specialist</p>
+                  <p className="text-xs text-slate-500 italic">Manufacturing System Specialist</p>
                 </div>
               </div>
               <div>
-                <nav className="flex flex-wrap gap-4 text-sm text-slate-600">
-                  <Link href="/produk" className="transition hover:text-blue-600">Produk</Link>
-                  <Link href="/addon" className="transition hover:text-blue-600">Add ON</Link>
-                  <Link href="/galeri" className="transition hover:text-blue-600">Galeri</Link>
-                  <Link href="/blog" className="transition hover:text-blue-600">BLOG</Link>
-                  <Link href="/kontak" className="transition hover:text-blue-600">Kontak</Link>
+                <nav className="flex flex-wrap gap-4 text-sm text-slate-700">
+                  <Link href="/produk" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">Produk</Link>
+                  <Link href="/addon" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">Add ON</Link>
+                  <Link href="/galeri" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">Galeri</Link>
+                  <Link href="/blog" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">BLOG</Link>
+                  <Link href="/kontak" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">Kontak</Link>
                 </nav>
               </div>
             </div>
@@ -49,20 +49,20 @@ export function Footer() {
               <p className="text-sm text-slate-600">Fast Respon (2) : <a href="tel:+6281318288881" className="hover:text-blue-600">+62 813 1828 8881</a></p>
               <p className="text-sm text-slate-600">Telp : <a href="tel:+622180641070" className="hover:text-blue-600">021 – 8064 1070</a></p>
               <p className="text-sm text-slate-600">Email : <a href="mailto:info@eosteknologi.com" className="hover:text-blue-600">info@eosteknologi.com</a></p>
-              <div className="mt-4 flex items-center gap-4 text-slate-600">
-                <a href="#" aria-label="Facebook" className="transition hover:text-[color:var(--accent)]"><Facebook className="h-5 w-5" /></a>
-                <a href="#" aria-label="Instagram" className="transition hover:text-[color:var(--accent)]"><Instagram className="h-5 w-5" /></a>
-                <a href="#" aria-label="LinkedIn" className="transition hover:text-[color:var(--accent)]"><Linkedin className="h-5 w-5" /></a>
-                <a href="#" aria-label="YouTube" className="transition hover:text-[color:var(--accent)]"><Youtube className="h-5 w-5" /></a>
+              <div className="mt-4 flex items-center gap-3 text-slate-600">
+                <a href="#" aria-label="Facebook" className="transition rounded-full p-2 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)]"><Facebook className="h-5 w-5" /></a>
+                <a href="#" aria-label="Instagram" className="transition rounded-full p-2 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)]"><Instagram className="h-5 w-5" /></a>
+                <a href="#" aria-label="LinkedIn" className="transition rounded-full p-2 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)]"><Linkedin className="h-5 w-5" /></a>
+                <a href="#" aria-label="YouTube" className="transition rounded-full p-2 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)]"><Youtube className="h-5 w-5" /></a>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-4 text-xs text-slate-500 md:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[color:var(--accent)]/20 pt-4 text-xs text-slate-600 md:flex-row">
             <p>© {new Date().getFullYear()} Eos Teknologi. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link href="/about-us" className="hover:text-blue-600">About-Us</Link>
-              <Link href="/privacy-policy" className="hover:text-blue-600">Privacy-Policy</Link>
+              <Link href="/about-us" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">About-Us</Link>
+              <Link href="/privacy-policy" className="transition hover:text-[color:var(--accent)] hover:underline underline-offset-4 decoration-[color:var(--accent)]">Privacy-Policy</Link>
             </div>
           </div>
         </div>
