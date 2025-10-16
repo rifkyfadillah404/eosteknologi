@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f8fb;
+  --foreground: #0f172a;
+  --muted: #4b5563;
+  --accent: #2bbdee;
+  --accent-soft: rgba(43, 189, 238, 0.16);
+  --card: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.08);
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.07);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: transparent;
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-shadow: var(--shadow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 600px at 85% -10%, rgba(43, 189, 238, 0.18), transparent 70%),
+    radial-gradient(700px 500px at 10% 0%, rgba(43, 189, 238, 0.12), transparent 65%),
+    linear-gradient(180deg, #f6fbff 0%, #eef8fd 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.004em;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(550px 350px at 50% -5%, rgba(255, 255, 255, 0.55), transparent 60%);
+  opacity: 0.8;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(43, 189, 238, 0.22);
+  color: #0f172a;
+}
+
+/* partners marquee */
+.marquee {
+  position: relative;
+  overflow: hidden;
+}
+.marquee__track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: marquee-right var(--marquee-duration, 30s) linear infinite;
+}
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* fade masks on marquee edges for a premium feel */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* animated gradient title for hero */
+.hero-title {
+  background-image: linear-gradient(90deg, var(--foreground) 0%, var(--accent) 50%, var(--foreground) 100%);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: title-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes title-shimmer {
+  0%, 20% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title {
+    animation: none;
+    background: none;
+    color: var(--foreground);
+  }
+}
+
+/* reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+.reveal[data-variant="up"] { transform: translateY(16px); }
+.reveal[data-variant="down"] { transform: translateY(-16px); }
+.reveal[data-variant="left"] { transform: translateX(16px); }
+.reveal[data-variant="right"] { transform: translateX(-16px); }
+.reveal[data-variant="scale"] { transform: scale(0.98); }
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
