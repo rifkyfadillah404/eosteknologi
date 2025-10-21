@@ -1,170 +1,89 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  CloudCog,
-  Cpu,
-  Factory,
-  Globe2,
-  LineChart,
-  Network,
-  Radio,
-  ShieldCheck,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
-import { Reveal } from "./components/reveal";
-import { GlowCard } from "./components/glow-card";
-import { SectionHeader } from "./components/section-header";
-import { BackgroundBeams } from "./components/background-beams";
-import { BackgroundRipple } from "./components/background-ripple";
+import Image from "next/image";
+import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { AboutSection } from "./sections/about";
 import { PartnersSection } from "./sections/partners";
 
-const heroHighlights = [
+const benefitItems = [
   {
-    title: "Biaya implementasi lebih efisien",
-    description: "Investasi yang terukur dengan hasil setara platform ERP global.",
-    icon: ShieldCheck,
+    number: "1.",
+    text: "Biaya lebih rendah dibandingkan penyedia ERP besar.",
   },
   {
-    title: "Fleksibel dan dapat dikustom",
-    description: "Blueprint siap adaptasi untuk KB, KITE, dan industri regulasi ketat.",
-    icon: Workflow,
+    number: "2.",
+    text: "Fleksibel dan dapat disesuaikan sesuai kebutuhan.",
   },
   {
-    title: "Integrasi kepabeanan mulus",
-    description: "Automasi CEISA 4.0, Coretax, dan pelaporan perdagangan real-time.",
-    icon: CloudCog,
+    number: "3.",
+    text: "Integrasi yang mulus dengan peraturan perdagangan di Indonesia.",
   },
   {
-    title: "Multi bahasa",
-    description: "UI dan dokumentasi operasional dalam Bahasa Indonesia, Inggris, dan Jepang.",
-    icon: Globe2,
+    number: "4.",
+    text: "Dukungan multibahasa (Inggris, Jepang, Indonesia).",
   },
 ];
 
-const valueMetrics = [
-  {
-    value: "38",
-    label: "Plant aktif",
-    description: "Beroperasi di kawasan berikat, KITE, dan KEK di seluruh Indonesia.",
-  },
-  {
-    value: "< 9 bln",
-    label: "ROI rata-rata",
-    description: "Payback terbukti dengan efisiensi operasional dan kepatuhan.",
-  },
-  {
-    value: "99.9%",
-    label: "Akurasi CEISA",
-    description: "Sinkronisasi host-to-host memastikan audit tanpa drama.",
-  },
-  {
-    value: "24/5",
-    label: "Support ahli",
-    description: "Tim manufaktur dan compliance siap mendampingi kapan pun.",
-  },
+const solutionPoints = [
+  "Melacak jumlah produksi dan status mesin secara otomatis dengan sensor IoT untuk penghitungan dan pemantauan real-time.",
+  "Tampilan Andon memberikan visual status produksi agar tim lebih terkoordinasi dan mempercepat penyelesaian masalah.",
+  "Integrasi Host-to-Host Ceisa 4.0 menyederhanakan proses ekspor-impor dan memastikan kepatuhan regulasi.",
+  "Coretax XML memudahkan unggah faktur pajak langsung ke portal tanpa rekonsiliasi manual.",
+  "Teknologi RFID memastikan traceability barang jadi dari produksi hingga pesanan pengiriman.",
 ];
 
-const solutionCategories = [
+const featureCards = [
   {
-    title: "ERP Manufaktur End-to-End",
+    title: "ERP (Enterprise Resource Planning)",
+    subtitle: "MRP, Auto Scheduler, APS",
     description:
-      "Integrasi produksi, persediaan, penjualan, hingga finance dalam satu command center.",
-    points: [
-      "MRP, APS, dan auto scheduler dengan parameter dinamis",
-      "Dashboard real-time untuk OEE dan kapasitas",
-      "Workflow approval lintas departemen",
-    ],
-    accent: "from-sky-500/90 via-blue-500/80 to-indigo-600/70",
+      "Integrasi keuangan, persediaan, pembelian, penjualan, dan produksi dalam satu platform untuk eksekusi yang presisi.",
+    image: "/assets/product/erp.jpg",
+    href: "https://eosteknologi.com/software-manufaktur/",
   },
   {
-    title: "IoT & Andon Smart Factory",
+    title: "Host to Host Ceisa 4.0",
+    subtitle: "Interface Bea Cukai Real-Time",
     description:
-      "Sensor penghitung produksi dan Andon display terhubung langsung ke lantai produksi.",
-    points: [
-      "Counter mesin otomatis dengan notifikasi downtime",
-      "Visualisasi status line untuk supervisor dan manajemen",
-      "Integrasi ke maintenance dan replenishment",
-    ],
-    accent: "from-emerald-500/90 via-teal-500/80 to-cyan-500/75",
+      "Automasi PIB, PEB, dan TPB dengan validasi langsung sehingga kepatuhan berjalan lancar tanpa pekerjaan ulang.",
+    image: "/assets/product/cheisa.jpg",
+    href: "https://eosteknologi.com/api-interface-to-ceisa-40-web/",
   },
   {
-    title: "Compliance & Trade Automation",
+    title: "Subcon Management System",
+    subtitle: "Maklon, HS Code, dan Bea Masuk",
     description:
-      "Automasi CEISA 4.0, Coretax XML, dan dokumen ekspor-impor tanpa input ulang.",
-    points: [
-      "Host-to-host PIB, PEB, dan TPB",
-      "Penelusuran asal bahan baku dan HS code",
-      "Library regulasi terupdate oleh konsultan EOS",
-    ],
-    accent: "from-purple-500/90 via-fuchsia-500/80 to-blue-500/70",
+      "Kelola BOM, WIP, perhitungan bea masuk, serta alur retur maklon secara transparan sesuai regulasi bea cukai.",
+    image: "/assets/product/beacukai.jpg",
+    href: "https://eosteknologi.com/subcon-meningkatkan-kelancaran-bisnis/",
   },
-];
-
-const integrationHighlights = [
   {
     title: "IoT Production Counter",
-    description: "Sensor gateway menghitung output per mesin secara instan.",
-    icon: Radio,
-  },
-  {
-    title: "RFID & WMS Tracking",
-    description: "Traceability menyeluruh dari inbound hingga ekspedisi.",
-    icon: Network,
-  },
-  {
-    title: "Ceisa 4.0 Host-to-Host",
-    description: "Dokumen kepabeanan otomatis validasi langsung dari sistem.",
-    icon: CloudCog,
-  },
-  {
-    title: "Coretax XML",
-    description: "Export faktur pajak siap unggah tanpa rekonsiliasi manual.",
-    icon: LineChart,
-  },
-];
-
-const featureShowcase = [
-  {
-    title: "Scheduler visual",
-    description: "Drag-and-drop jadwal produksi dengan simulasi kapasitas realtime.",
-    icon: Sparkles,
-  },
-  {
-    title: "Subcon management",
-    description: "Kalkulasi maklon, alur retur, dan pengawasan bea masuk otomatis.",
-    icon: Workflow,
-  },
-  {
-    title: "Mobile approvals",
-    description: "Persetujuan PR/PO dan permintaan produksi dari mana pun.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Analytics & AI",
-    description: "Insight demand, lead time, dan bottleneck dengan rekomendasi tindakan.",
-    icon: Cpu,
+    subtitle: "Sensor & Andon Display",
+    description:
+      "Pantau output mesin, downtime, dan status line melalui sensor terintegrasi dengan dashboard produksi.",
+    image: "/assets/product/mrp.jpg",
+    href: "https://eosteknologi.com/solutions-erp-features/",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Sistem EOS memberi kami kendali penuh atas inventory kawasan berikat dan integrasi ke SAP berjalan mulus.",
-    company: "Rubber Factory",
+      "Perusahaan kami telah memenuhi kebutuhan IT Inventory untuk Kawasan Berikat dengan sistem EOS ini dan antarmuka ke SAP.",
+    author: "Rubber Factory",
     role: "IT & Compliance",
-    result: "Implementasi CEISA 4.0 dan RFID dalam 6 bulan",
+    avatar: "https://i.pravatar.cc/160?img=12",
   },
   {
     quote:
-      "Produksi kami kini transparan. Supervisor cukup memantau Andon dan dashboard tanpa laporan manual.",
-    company: "Paper Factory",
-    role: "Operations Excellence",
-    result: "Downtime kritis turun 28% dalam kuartal pertama",
+      "Terima kasih telah membantu mengotomatisasi sistem dan perangkat lunak Roll Tracking di perusahaan kertas nasional kami.",
+    author: "Paper Factory",
+    role: "Operations Lead",
+    avatar: "https://i.pravatar.cc/160?img=32",
   },
 ];
 
-const contactChannels = [
+const ctaChannels = [
   {
     title: "Diskusi Solusi",
     description: "Hubungi konsultan manufaktur kami dan dapatkan demo terpersonalisasi.",
@@ -179,278 +98,229 @@ const contactChannels = [
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <section className="relative isolate overflow-hidden pb-32 pt-28">
-        <div
-          className="absolute inset-0 -z-20 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://eosteknologi.com/wp-content/uploads/2025/07/front-page-03.webp')",
-          }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 -z-15 bg-slate-950/70" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(1200px_680px_at_10%_-10%,rgba(59,130,246,0.28),transparent_70%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(900px_520px_at_90%_20%,rgba(14,165,233,0.18),transparent_70%)]" />
-        <BackgroundBeams className="opacity-35" />
-        <BackgroundRipple className="opacity-20" />
-
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6">
-          <Reveal
-            variant="up"
-            className="max-w-3xl rounded-3xl border border-white/15 bg-slate-950/60 p-8 backdrop-blur-lg shadow-[0_30px_80px_rgba(15,23,42,0.45)]"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-blue-100">
+    <main className="bg-white text-slate-900">
+      <section className="relative overflow-hidden bg-slate-950 text-white" id="hero">
+        <div className="absolute inset-0">
+          <Image
+            src="/assets/logo/gedung.jpg"
+            alt="Latar hero EOS ERP"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
+          <div className="absolute inset-0 bg-slate-950/75" />
+        </div>
+        <div className="relative mx-auto grid max-w-6xl gap-16 px-6 py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="space-y-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm uppercase tracking-wide text-blue-200">
               <Sparkles className="h-4 w-4" />
-              <span>Software ERP Manufacturing • IoT • CEISA 4.0 • Coretax</span>
+              <span>Software ERP Manufacturing</span>
             </div>
-            <h1 className="mt-8 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
-              Solusi ERP cerdas dan hemat biaya untuk pabrik global di Indonesia
-            </h1>
-            <p className="mt-6 text-lg text-slate-100 md:text-xl">
-              EOS menghadirkan platform manufaktur terintegrasi yang menyatukan produksi, kepabeanan, dan compliance dalam satu ekosistem modern berbasis cloud.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/product" className="btn btn-on-dark inline-flex items-center">
-                Lihat Demo Produk
+            <div className="space-y-6">
+              <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+                Solusi ERP yang cerdas dan hemat biaya untuk bisnis global di Indonesia
+              </h1>
+              <p className="text-lg text-slate-200 md:text-xl">
+                EOS menggabungkan ERP, otomasi kepabeanan, dan IoT shopfloor sehingga perusahaan dapat go-live cepat, patuh regulasi, dan mengurangi biaya operasional.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link href="https://eosteknologi.com/solutions-erp-features/" className="btn btn-on-dark inline-flex items-center">
+                  Lihat Fitur Lengkap
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="https://eosteknologi.com/#contact" className="btn btn-outline-on-dark">
+                  Konsultasi Gratis
+                </Link>
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {benefitItems.map((item) => (
+                <div
+                  key={item.number}
+                  className="rounded-2xl border border-white/15 bg-white/10 p-4 text-left shadow-lg backdrop-blur"
+                >
+                  <span className="text-2xl font-semibold text-white/90">{item.number}</span>
+                  <p className="mt-2 text-sm text-slate-100/90">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-3xl border border-white/20 bg-white/5 p-4 shadow-[0_25px_70px_rgba(15,23,42,0.35)]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <Image
+                  src="/assets/product/product.png"
+                  alt="Tim EOS saat implementasi"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <AboutSection />
+
+      <section className="bg-slate-50 py-24" id="total-solution">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600">
+                Total Solusi
+              </div>
+              <h2 className="text-3xl font-semibold md:text-4xl">
+                Solusi ERP lengkap dengan Sensor Penghitung Produksi IoT, RFID, Ceisa 4.0, dan Coretax XML
+              </h2>
+              <p className="text-base leading-relaxed text-slate-600">
+                Integrasi IoT Andon Display dan sistem kepabeanan menghadirkan alur kerja yang efisien untuk operasi manufaktur. Anda mendapatkan visibilitas real-time, optimasi mesin, dan dokumentasi kepabeanan otomatis.
+              </p>
+              <div className="space-y-3">
+                {solutionPoints.map((point) => (
+                  <p key={point} className="flex gap-3 text-sm text-slate-600">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+                    <span>{point}</span>
+                  </p>
+                ))}
+              </div>
+              <Link
+                href="https://eosteknologi.com/solutions-erp-features/"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-500"
+              >
+                Pelajari lebih lanjut
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/addon" className="btn btn-outline-on-dark">
-                Telusuri Modul Tambahan
-              </Link>
             </div>
-          </Reveal>
-
-          <Reveal variant="up" delayMs={80}>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {heroHighlights.map((item) => (
-                <GlowCard key={item.title} className="flex h-full flex-col gap-3 bg-white/5 p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-blue-200">
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="text-sm text-slate-200/80">{item.description}</p>
-                </GlowCard>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="relative z-10 -mt-24 rounded-t-[44px] bg-white pb-24 pt-20 text-slate-900">
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-900/15 to-transparent" aria-hidden />
-        <div className="mx-auto max-w-6xl px-6">
-          <Reveal variant="up">
-            <SectionHeader
-              align="center"
-              overline="Keunggulan Utama"
-              title="Dengan EOS, transformasi digital Anda langsung terasa"
-              description="Kami menggabungkan proses manufaktur, kepabeanan, dan analitik dalam satu platform yang bisa tumbuh bersama plant Anda."
-            />
-          </Reveal>
-
-          <Reveal variant="up" delayMs={60}>
-            <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {valueMetrics.map((metric) => (
-                <GlowCard key={metric.label} className="flex h-full flex-col gap-3 bg-white p-6">
-                  <span className="text-3xl font-semibold text-slate-900">{metric.value}</span>
-                  <span className="text-sm uppercase tracking-wide text-blue-600/80">{metric.label}</span>
-                  <p className="text-sm text-slate-600">{metric.description}</p>
-                </GlowCard>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="relative bg-slate-50 py-24 text-slate-900">
-        <div className="mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Reveal variant="up" className="space-y-8">
-            <SectionHeader
-              overline="Apa itu EOS ERP?"
-              title="Sistem manajemen terintegrasi untuk manufaktur modern"
-              description="Menghubungkan setiap departemen dengan data real-time sehingga keputusan bisa diambil cepat, presisi, dan tetap patuh regulasi."
-            />
-            <div className="grid gap-4 md:grid-cols-2">
-              {integrationHighlights.map((item) => (
-                <GlowCard key={item.title} className="flex h-full flex-col gap-3 bg-white p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                  <p className="text-sm text-slate-600">{item.description}</p>
-                </GlowCard>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal variant="up" delayMs={80}>
-            <GlowCard className="relative flex h-full flex-col overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white">
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-30"
-                style={{
-                  backgroundImage:
-                    "url('https://eosteknologi.com/wp-content/uploads/2025/02/IMG_0210-Copy.jpg')",
-                }}
-                aria-hidden
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-900/80 to-slate-900/95" aria-hidden />
-              <div className="relative flex flex-col gap-6">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide text-blue-200">
-                  <Factory className="h-4 w-4" />
-                  <span>Plant Operations</span>
-                </div>
-                <p className="text-lg leading-relaxed text-slate-100">
-                  EOS ERP menyederhanakan proses dari perencanaan produksi hingga ekspor-impor. Semua data terhubung sehingga tim champion Anda dapat fokus pada inovasi, bukan administrasi.
-                </p>
-                <div className="flex flex-wrap gap-3 text-sm text-slate-200/90">
-                  <span className="rounded-full border border-white/20 px-3 py-1">Production Planning</span>
-                  <span className="rounded-full border border-white/20 px-3 py-1">Inventory Visibility</span>
-                  <span className="rounded-full border border-white/20 px-3 py-1">Regulatory Compliance</span>
-                  <span className="rounded-full border border-white/20 px-3 py-1">Continuous Improvement</span>
-                </div>
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-[0_25px_70px_rgba(15,23,42,0.12)]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/assets/product/beacukai.jpg"
+                  alt="Automasi kepabeanan EOS"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 35vw, 90vw"
+                />
               </div>
-            </GlowCard>
-          </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="relative bg-white py-24 text-slate-900">
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500" aria-hidden />
+      <section className="py-24" id="features">
         <div className="mx-auto max-w-6xl px-6">
-          <Reveal variant="up">
-            <SectionHeader
-              align="center"
-              overline="Total Solusi"
-              title="Blueprint implementasi modern untuk setiap departemen"
-              description="Kami siapkan modul terkurasi dan integrasi siap pakai agar proyek berjalan cepat dan terukur."
-            />
-          </Reveal>
-
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
-            {solutionCategories.map((category, idx) => (
-              <Reveal key={category.title} variant="up" delayMs={idx * 80}>
-                <div className="relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
-                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${category.accent} opacity-25`} aria-hidden />
-                  <div className="relative space-y-5">
-                    <h3 className="text-2xl font-semibold text-slate-900">{category.title}</h3>
-                    <p className="text-sm text-slate-600">{category.description}</p>
-                    <ul className="space-y-3 text-sm text-slate-600">
-                      {category.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2">
-                          <Sparkles className="mt-0.5 h-4 w-4 text-blue-500" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/solutions" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-500">
-                      Pelajari blueprint
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600">
+              私たちのフィーチャーをご覧ください！
+            </div>
+            <h2 className="mt-6 text-3xl font-semibold md:text-4xl">Lihat Fitur Kami</h2>
+            <p className="mt-4 text-base text-slate-600">
+              ERP, CEISA 4.0, Subcon Management, hingga dashboard IoT yang siap diintegrasikan sesuai kebutuhan pabrik Anda.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+            {featureCards.map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.1)] transition hover:-translate-y-1 hover:border-blue-500/30"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    sizes="(min-width: 1280px) 20vw, (min-width: 768px) 40vw, 90vw"
+                  />
                 </div>
-              </Reveal>
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-blue-600">{card.subtitle}</span>
+                  <h3 className="text-xl font-semibold text-slate-900">{card.title}</h3>
+                  <p className="flex-1 text-sm text-slate-600">{card.description}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
+                    Kenali lebih lanjut
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-slate-900 py-24 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_50%_-10%,rgba(59,130,246,0.35),transparent_70%)] opacity-45" aria-hidden />
-        <div className="absolute inset-0 bg-slate-950/85" aria-hidden />
-        <div className="relative mx-auto max-w-6xl px-6">
-          <Reveal variant="up">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-white/15 bg-slate-950/90 p-10 text-center shadow-[0_35px_90px_rgba(15,23,42,0.45)] backdrop-blur-lg">
-              <SectionHeader
-                align="center"
-                invert
-                overline="Fitur Unggulan"
-                title="Semua yang dibutuhkan tim champion untuk menjaga plant berjalan mulus"
-                description="Dari lantai produksi hingga ruang audit, EOS memampukan kolaborasi lintas fungsi tanpa bottleneck."
-              />
-            </div>
-          </Reveal>
-
-          <Reveal variant="up" delayMs={70}>
-            <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {featureShowcase.map((feature) => (
-                <GlowCard key={feature.title} className="flex h-full flex-col gap-3 bg-white/5 p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-blue-200">
-                    <feature.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
-                  <p className="text-sm text-slate-200/80">{feature.description}</p>
-                </GlowCard>
-              ))}
-            </div>
-          </Reveal>
+      <section className="bg-[#f8f5ec] py-24" id="testimonials">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-600">
+            Testimonial
+          </div>
+          <h2 className="mt-6 text-3xl font-semibold md:text-4xl">Kisah sukses klien kami</h2>
+          <p className="mt-4 text-base text-slate-600">
+            Kami bangga mendampingi pabrik di berbagai industri. Berikut cerita klien setelah mengadopsi EOS ERP dan solusi kepabeanan kami.
+          </p>
         </div>
-      </section>
 
-      <section className="relative bg-slate-50 py-24 text-slate-900">
-        <div className="mx-auto max-w-6xl px-6">
-          <Reveal variant="up">
-            <SectionHeader
-              overline="Testimonial"
-              title="Kisah sukses klien kami"
-              description="Kolaborasi erat dengan tim EOS memastikan setiap plant memperoleh manfaat nyata sejak hari pertama go-live."
-            />
-          </Reveal>
-
-          <Reveal variant="up" delayMs={70}>
-            <div className="mt-16 grid gap-8 md:grid-cols-2">
-              {testimonials.map((testimonial) => (
-                <GlowCard key={testimonial.company} className="flex h-full flex-col justify-between bg-white p-8">
-                  <p className="text-lg leading-relaxed text-slate-700">“{testimonial.quote}”</p>
-                  <div className="mt-8 space-y-2 text-sm text-slate-600">
-                    <p className="font-semibold text-slate-900">{testimonial.company}</p>
-                    <p>{testimonial.role}</p>
-                    <p className="text-blue-600">{testimonial.result}</p>
-                  </div>
-                </GlowCard>
-              ))}
+        <div className="mx-auto mt-16 grid max-w-5xl gap-8 px-6 md:grid-cols-2">
+          {testimonials.map((item) => (
+            <div
+              key={item.author}
+              className="flex h-full flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_25px_70px_rgba(15,23,42,0.12)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="relative h-16 w-16 overflow-hidden rounded-full border border-blue-200">
+                  <Image src={item.avatar} alt={item.author} fill className="object-cover" sizes="64px" />
+                </div>
+                <div className="text-left">
+                  <p className="text-base font-semibold text-slate-900">{item.author}</p>
+                  <p className="text-sm text-slate-500">{item.role}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-blue-500">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <Star key={idx} className="h-4 w-4 fill-blue-500 text-blue-500" />
+                ))}
+              </div>
+              <p className="flex-1 text-base leading-relaxed text-slate-700">“{item.quote}”</p>
             </div>
-          </Reveal>
+          ))}
         </div>
       </section>
 
       <PartnersSection />
 
-      <section className="relative bg-slate-900 py-24 text-white">
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500" aria-hidden />
-        <div className="mx-auto max-w-5xl px-6">
-          <Reveal variant="up">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur">
-              <div className="flex flex-col gap-6 text-center">
-                <div className="inline-flex items-center gap-2 self-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide text-blue-200">
-                  <Sparkles className="h-4 w-4" />
-                  <span>Konsultasi Personal</span>
+      <section className="bg-slate-900 py-24 text-white" id="cta">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide text-blue-200">
+            <Sparkles className="h-4 w-4" />
+            <span>Konsultasi Personal</span>
+          </div>
+          <h2 className="mt-8 text-3xl font-semibold sm:text-4xl">
+            Hubungi kami sekarang untuk solusi EOS ERP, IoT, RFID, Ceisa 4.0, Coretax, dan regulasi bisnis di Indonesia
+          </h2>
+          <p className="mt-4 text-base text-slate-200">
+            Dapatkan roadmap implementasi, estimasi investasi, dan penawaran terbaik tahun ini untuk mempercepat transformasi manufaktur Anda.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {ctaChannels.map((channel) => (
+              <Link
+                key={channel.title}
+                href={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-left text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/15"
+              >
+                <div className="space-y-1 text-left">
+                  <p className="text-base font-semibold">{channel.title}</p>
+                  <p className="text-slate-200/80">{channel.description}</p>
                 </div>
-                <h2 className="text-3xl font-semibold sm:text-4xl">
-                  Hubungi kami untuk konsultasi ahli mengenai Digital Factory, IoT, RFID, dan regulasi Indonesia
-                </h2>
-                <p className="text-base text-slate-200">
-                  Dapatkan roadmap implementasi, estimasi investasi, dan penawaran terbaik tahun ini untuk mempercepat transformasi manufaktur Anda.
-                </p>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  {contactChannels.map((channel) => (
-                    <Link
-                      key={channel.title}
-                      href={channel.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-between rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-left text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/15"
-                    >
-                      <div className="space-y-1">
-                        <p className="text-base font-semibold">{channel.title}</p>
-                        <p className="text-slate-200/80">{channel.description}</p>
-                      </div>
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </main>
