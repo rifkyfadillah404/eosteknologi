@@ -191,10 +191,6 @@ const dict: Record<Lang, Record<string, string>> = {
     "faq.a3": "SLA, support channels, and periodic training for your team are available.",
     "faq.q4": "Is CEISA 4.0 integration available?",
     "faq.a4": "Yes. We support H2H CEISA 4.0 and real‑time validation for PIB/PEB/TPB.",
-
-    "testimonials.overline": "Client Trust",
-    "testimonials.title": "Testimonials from partners growing with Eos Teknologi",
-    "testimonials.desc": "We collaborate with founders, marketing, and product teams to deliver measurable impact.",
   },
 };
 
