@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
+import { LangProvider } from "./providers/lang";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     "Solusi ERP yang cerdas dan hemat biaya untuk bisnis global di Indonesia.",
   icons: {
     icon: [
-      { url: "/assets/logo/eos.png?v=2", type: "image/png", sizes: "225x225" },
+      { url: "/assets/logo/eos.png?v=3", type: "image/png", sizes: "225x225" },
     ],
     shortcut: ["/assets/logo/eos.png?v=2"],
     apple: "/assets/logo/eos.png?v=2",
@@ -34,12 +35,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-x-hidden`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-x-hidden`}>
+        <LangProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   );

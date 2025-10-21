@@ -10,7 +10,7 @@ export function GlowCard({ children, className }: GlowCardProps) {
   return (
     <div
       className={cn(
-        "glow-card transition-transform duration-300 hover:-translate-y-1",
+        "rounded-2xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-transform duration-300 hover:-translate-y-1",
         className
       )}
     >

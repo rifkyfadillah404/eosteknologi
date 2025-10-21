@@ -1,5 +1,7 @@
+"use client";
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
+import { useLang } from "../providers/lang";
 import { GlowCard } from "../components/glow-card";
 import { SectionHeader } from "../components/section-header";
 
@@ -23,29 +25,30 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+  const { t } = useLang();
   return (
-    <section className="py-24" id="testimonials">
+    <section className="bg-white py-24" id="testimonials">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          overline="Kepercayaan Klien"
-          title="Testimoni Mitra yang Bertumbuh Bersama Eos Teknologi"
-          description="Kami berkolaborasi dengan para pendiri, tim pemasaran, dan produk untuk menghasilkan dampak yang terukur."
+          overline={t("testimonials.overline", "Kepercayaan Klien")}
+          title={t("testimonials.title", "Testimoni Mitra yang Bertumbuh Bersama Eos Teknologi")}
+          description={t("testimonials.desc", "Kami berkolaborasi dengan para pendiri, tim pemasaran, dan produk untuk menghasilkan dampak yang terukur.")}
           align="center"
         />
         <div className="mt-14 grid gap-8 md:grid-cols-2">
-          {testimonials.map((item) => (
+          {testimonials.map((item, idx) => (
             <GlowCard key={item.name} className="h-full p-8">
               <div className="flex items-center gap-4">
                 <Image
                   src={item.avatar}
-                  alt={item.name}
+                  alt={t(`testimonials.item${idx+1}.name`, item.name)}
                   width={48}
                   height={48}
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div className="space-y-1">
-                  <p className="text-sm font-semibold text-slate-900">{item.name}</p>
-                  <p className="text-xs text-slate-500">{item.role}</p>
+                  <p className="text-sm font-semibold text-slate-900">{t(`testimonials.item${idx+1}.name`, item.name)}</p>
+                  <p className="text-xs text-slate-500">{t(`testimonials.item${idx+1}.role`, item.role)}</p>
                   <div className="flex items-center gap-1">
                     {Array.from({ length: item.rating }).map((_, i) => (
                       <Star key={i} className="h-4 w-4 text-[color:var(--accent)]" fill="currentColor" strokeWidth={0} />
@@ -55,7 +58,7 @@ export function TestimonialsSection() {
               </div>
               <div className="mt-6">
                 <Quote className="h-6 w-6" strokeWidth={1.5} style={{ color: "var(--accent)" }} />
-                <p className="mt-3 text-base text-slate-600">{item.quote}</p>
+                <p className="mt-3 text-base text-slate-600">{t(`testimonials.item${idx+1}.quote`, item.quote)}</p>
               </div>
             </GlowCard>
           ))}

@@ -1,6 +1,8 @@
+"use client";
 import { SectionHeader } from "../components/section-header";
 import { GlowCard } from "../components/glow-card";
 import { ShieldCheck, LockKeyhole, CloudCog, FileLock } from "lucide-react";
+import { useLang } from "../providers/lang";
 
 const points = [
   { icon: ShieldCheck, title: "Kontrol Akses Berlapis", description: "Role‑based access, audit trail, dan otorisasi granular untuk setiap modul." },
@@ -10,22 +12,23 @@ const points = [
 ];
 
 export function SecuritySection() {
+  const { t } = useLang();
   return (
-    <section className="py-24" id="security">
+    <section className="bg-[#f8f5ec] py-24" id="security">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          overline="Keamanan"
-          title="Standar keamanan sesuai kebutuhan enterprise"
-          description="Lindungi data dan operasional dengan kontrol akses, enkripsi, dan proses pemulihan yang andal."
+          overline={t("security.overline", "Keamanan")}
+          title={t("security.title", "Standar keamanan sesuai kebutuhan enterprise")}
+          description={t("security.desc", "Lindungi data dan operasional dengan kontrol akses, enkripsi, dan proses pemulihan yang andal.")}
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {points.map((p) => (
+          {points.map((p, idx) => (
             <GlowCard key={p.title} className="h-full p-6">
               <div className="space-y-4">
                 <p.icon className="h-6 w-6 text-[color:var(--accent)]" />
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-                  <p className="text-sm text-slate-500">{p.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900">{t(`security.point${idx+1}.title`, p.title)}</h3>
+                  <p className="text-sm text-slate-600">{t(`security.point${idx+1}.desc`, p.description)}</p>
                 </div>
               </div>
             </GlowCard>

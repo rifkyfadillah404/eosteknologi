@@ -1,6 +1,8 @@
+"use client";
 import { SectionHeader } from "../components/section-header";
 import { GlowCard } from "../components/glow-card";
 import { CalendarCheck, Settings2, UploadCloud, Users } from "lucide-react";
+import { useLang } from "../providers/lang";
 
 const steps = [
   { icon: CalendarCheck, title: "Assessment & Rencana", description: "Analisis proses, penyelarasan target, dan rencana implementasi bertahap." },
@@ -10,22 +12,23 @@ const steps = [
 ];
 
 export function ImplementationSection() {
+  const { t } = useLang();
   return (
-    <section className="py-24" id="implementation">
+    <section className="bg-white py-24" id="implementation">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          overline="Implementasi"
-          title="Metodologi terstruktur untuk adopsi yang mulus"
-          description="Kami mendampingi setiap tahap implementasi dari perencanaan hingga go‑live agar transisi berjalan lancar."
+          overline={t("implementation.overline", "Implementasi")}
+          title={t("implementation.title", "Metodologi terstruktur untuk adopsi yang mulus")}
+          description={t("implementation.desc", "Kami mendampingi setiap tahap implementasi dari perencanaan hingga go‑live agar transisi berjalan lancar.")}
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
+          {steps.map((step, idx) => (
             <GlowCard key={step.title} className="h-full p-6">
               <div className="space-y-4">
                 <step.icon className="h-6 w-6 text-[color:var(--accent)]" />
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
-                  <p className="text-sm text-slate-500">{step.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900">{t(`implementation.step${idx+1}.title`, step.title)}</h3>
+                  <p className="text-sm text-slate-600">{t(`implementation.step${idx+1}.desc`, step.description)}</p>
                 </div>
               </div>
             </GlowCard>

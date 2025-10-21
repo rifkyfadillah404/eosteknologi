@@ -1,4 +1,6 @@
+"use client";
 import { SectionHeader } from "../components/section-header";
+import { useLang } from "../providers/lang";
 
 const faqs = [
   { q: "Berapa lama proses implementasi?", a: "Tergantung ruang lingkup. Rata‑rata 6–12 minggu untuk modul inti." },
@@ -8,20 +10,21 @@ const faqs = [
 ];
 
 export function FAQSection() {
+  const { t } = useLang();
   return (
-    <section className="py-24" id="faq">
+    <section className="bg-white py-24" id="faq">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          overline="FAQ"
-          title="Pertanyaan yang sering diajukan"
-          description="Jika pertanyaan Anda belum terjawab, hubungi kami untuk konsultasi singkat."
+          overline={t("faq.overline", "FAQ")}
+          title={t("faq.title", "Pertanyaan yang sering diajukan")}
+          description={t("faq.desc", "Jika pertanyaan Anda belum terjawab, hubungi kami untuk konsultasi singkat.")}
           align="center"
         />
         <div className="mx-auto mt-12 max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
           {faqs.map((item, idx) => (
             <div key={item.q} className="p-6">
-              <p className="text-base font-semibold text-slate-900">{idx + 1}. {item.q}</p>
-              <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p className="text-base font-semibold text-slate-900">{idx + 1}. {t(`faq.q${idx+1}`, item.q)}</p>
+              <p className="mt-2 text-sm text-slate-600">{t(`faq.a${idx+1}`, item.a)}</p>
             </div>
           ))}
         </div>
