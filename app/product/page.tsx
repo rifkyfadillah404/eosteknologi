@@ -275,7 +275,7 @@ export default function ProductPage() {
             <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
               Ajak tim Anda melihat demo digital factory EOS
             </h2>
-            <p className="mt-4 max-w-2xl text-lg text-slate-600">
+            <p className="mt-4 max-w-2xl text-lg text-slate-600 text-center mx-auto">
               Lengkapi formulir kebutuhan, kami akan tayangkan demo personal yang menyesuaikan SOP perusahaan Anda dan menyertakan estimasi ROI implementasi.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">

@@ -27,14 +27,14 @@ export function CallToActionSection() {
             <div className="flex flex-col gap-4">
               <Link
                 href="https://wa.me/6285780520587?text=Halo%20Eos%20Teknologi,%20saya%20butuh%20jasa%20pembuatan%20website"
-                className="btn btn-on-dark"
+                className="btn btn-primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {t("cta.whatsapp", "Chat WhatsApp")}
                 <MessageCircle className="ml-2 h-4 w-4" strokeWidth={1.6} />
               </Link>
-              <ConsultationTrigger className="btn btn-outline-on-dark" source="Home CTA Section">
+              <ConsultationTrigger className="btn btn-outline" source="Home CTA Section">
                 {t("cta.email", "Kirim Email")}
                 <ArrowRight className="ml-2 h-4 w-4" strokeWidth={1.6} />
               </ConsultationTrigger>
