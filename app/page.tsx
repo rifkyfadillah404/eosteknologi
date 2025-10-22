@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { ConsultationTrigger } from "./components/consultation-trigger";
 import { AboutSection } from "./sections/about";
 import { PartnersSection } from "./sections/partners";
 
@@ -128,9 +129,12 @@ export default function Home() {
                   Lihat Fitur Lengkap
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="https://eosteknologi.com/#contact" className="btn btn-outline-on-dark">
+                <ConsultationTrigger
+                  className="btn btn-outline-on-dark"
+                  source="Home Hero"
+                >
                   Konsultasi Gratis
-                </Link>
+                </ConsultationTrigger>
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, RefreshCw, ShieldCheck, Sparkles } from "lucide-react";
+import { ConsultationTrigger } from "../components/consultation-trigger";
 import { Reveal } from "../components/reveal";
 import { SectionHeader } from "../components/section-header";
 import { GlowCard } from "../components/glow-card";
@@ -113,10 +114,13 @@ export default function ProductPage() {
               Dari ERP dasar hingga orkestrasi multi-plant, setiap paket dirancang agar perusahaan manufaktur Indonesia dapat tumbuh cepat, patuh regulasi, dan tetap efisien.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/kontak" className="btn btn-on-dark inline-flex items-center">
+              <ConsultationTrigger
+                className="btn btn-on-dark inline-flex items-center"
+                source="Product Hero"
+              >
                 Konsultasi Gratis
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </ConsultationTrigger>
               <Link href="/case-studies" className="btn btn-outline-on-dark">
                 Lihat Studi Kasus
               </Link>
@@ -183,13 +187,13 @@ export default function ProductPage() {
                         ))}
                       </ul>
                       <div className="flex flex-wrap gap-3">
-                        <Link
-                          href="/kontak"
+                        <ConsultationTrigger
                           className="inline-flex items-center justify-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-600 transition duration-300 hover:bg-blue-500 hover:text-white"
+                          source={`Product Package: ${product.name}`}
                         >
                           Minta Demo
                           <ArrowRight className="h-4 w-4" />
-                        </Link>
+                        </ConsultationTrigger>
                         <Link
                           href="/case-studies"
                           className="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-600 transition hover:border-blue-400 hover:text-blue-600"

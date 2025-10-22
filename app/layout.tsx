@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { LangProvider } from "./providers/lang";
+import { ConsultationModalProvider } from "./providers/consultation-modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +38,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-x-hidden`}>
         <LangProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <ConsultationModalProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </ConsultationModalProvider>
         </LangProvider>
       </body>
     </html>

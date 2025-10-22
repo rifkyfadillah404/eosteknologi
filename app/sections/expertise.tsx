@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { SectionHeader } from "../components/section-header";
 import { GlowCard } from "../components/glow-card";
+import Link from "next/link";
+import { ConsultationTrigger } from "../components/consultation-trigger";
 
 const packages = [
   {
@@ -83,17 +84,32 @@ export function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={pkg.cta}
-                  className={cn(
-                    "inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition",
-                    pkg.highlight
-                      ? "bg-blue-600 text-white shadow-blue-500/30 hover:bg-blue-700"
-                      : "border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700"
-                  )}
-                >
-                  {pkg.ctaLabel}
-                </Link>
+                {pkg.cta.startsWith("mailto:") ? (
+                  <ConsultationTrigger
+                    className={cn(
+                      "inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition",
+                      pkg.highlight
+                        ? "bg-blue-600 text-white shadow-blue-500/30 hover:bg-blue-700"
+                        : "border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700"
+                    )}
+                    source={`Pricing Package: ${pkg.name}`}
+                    fullWidth
+                  >
+                    {pkg.ctaLabel}
+                  </ConsultationTrigger>
+                ) : (
+                  <Link
+                    href={pkg.cta}
+                    className={cn(
+                      "inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition",
+                      pkg.highlight
+                        ? "bg-blue-600 text-white shadow-blue-500/30 hover:bg-blue-700"
+                        : "border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700"
+                    )}
+                  >
+                    {pkg.ctaLabel}
+                  </Link>
+                )}
               </div>
             </GlowCard>
           ))}

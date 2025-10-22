@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { GlowCard } from "../components/glow-card";
 import { useLang } from "../providers/lang";
+import { ConsultationTrigger } from "../components/consultation-trigger";
 
 export function CallToActionSection() {
   const { t } = useLang();
@@ -33,13 +34,10 @@ export function CallToActionSection() {
                 {t("cta.whatsapp", "Chat WhatsApp")}
                 <MessageCircle className="ml-2 h-4 w-4" strokeWidth={1.6} />
               </Link>
-              <Link
-                href="mailto:hello@eosteknologi.com?subject=Konsultasi%20Pembuatan%20Website"
-                className="btn btn-outline-on-dark"
-              >
+              <ConsultationTrigger className="btn btn-outline-on-dark" source="Home CTA Section">
                 {t("cta.email", "Kirim Email")}
                 <ArrowRight className="ml-2 h-4 w-4" strokeWidth={1.6} />
-              </Link>
+              </ConsultationTrigger>
             </div>
           </div>
         </div>

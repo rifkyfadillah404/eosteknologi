@@ -32,6 +32,7 @@ export function Footer() {
                 <nav className="flex flex-wrap gap-4 text-sm">
                   <Link href="/produk" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">Produk</Link>
                   <Link href="/addon" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">Add ON</Link>
+                  <Link href="/case-studies" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">Case Studies</Link>
                   <Link href="/galeri" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">Galeri</Link>
                   <Link href="/blog" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">BLOG</Link>
                   <Link href="/kontak" className="text-slate-600 transition-all hover:text-blue-600 hover:translate-x-0.5">Kontak</Link>

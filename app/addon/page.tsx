@@ -5,6 +5,7 @@ import { SectionHeader } from "../components/section-header";
 import { GlowCard } from "../components/glow-card";
 import { BackgroundBeams } from "../components/background-beams";
 import { BackgroundRipple } from "../components/background-ripple";
+import { ConsultationTrigger } from "../components/consultation-trigger";
 
 const heroHighlights = [
   {
@@ -146,10 +147,13 @@ export default function AddOnPage() {
               Pilih add-on yang siap mempercepat approval, memastikan kepabeanan, hingga menghadirkan wawasan IoT. Semuanya teruji di industri manufaktur Indonesia.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/kontak" className="btn btn-on-dark inline-flex items-center">
+              <ConsultationTrigger
+                className="btn btn-on-dark inline-flex items-center"
+                source="Add-On Hero"
+              >
                 Konsultasi Add-On
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </ConsultationTrigger>
               <Link href="/product" className="btn btn-outline-on-dark">
                 Lihat Paket Produk
               </Link>
@@ -209,13 +213,13 @@ export default function AddOnPage() {
                         ))}
                       </ul>
                       <div className="flex flex-wrap gap-3">
-                        <Link
-                          href="/kontak"
+                        <ConsultationTrigger
                           className="inline-flex items-center justify-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-600 transition duration-300 hover:bg-blue-500 hover:text-white"
+                          source={`Add-On Module: ${addon.name}`}
                         >
                           Diskusikan Implementasi
                           <ArrowRight className="h-4 w-4" />
-                        </Link>
+                        </ConsultationTrigger>
                         <Link
                           href={addon.link}
                           target="_blank"
@@ -303,9 +307,9 @@ export default function AddOnPage() {
               Ceritakan proses yang ingin diotomasi, kami siapkan demo dan simulasi manfaat finansialnya. Add-on dapat digabung dengan paket produk utama kapan saja.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="mailto:hello@eosteknologi.com" className="btn btn-primary">
+              <ConsultationTrigger className="btn btn-primary" source="Add-On Final CTA">
                 Kirim Brief Project
-              </Link>
+              </ConsultationTrigger>
               <Link href="https://cal.com" className="btn btn-outline">
                 Booking sesi eksplorasi
               </Link>

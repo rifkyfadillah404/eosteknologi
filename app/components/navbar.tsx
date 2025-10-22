@@ -8,6 +8,7 @@ import { useLang } from "../providers/lang";
 const navItemsId = [
   { label: "PRODUK", href: "/product" },
   { label: "ADD ON", href: "/addon" },
+  { label: "STUDI KASUS", href: "/case-studies" },
   { label: "GALERI", href: "/galeri" },
   { label: "BLOG", href: "/blog" },
   { label: "KONTAK", href: "/kontak" },
@@ -16,6 +17,7 @@ const navItemsId = [
 const navItemsEn = [
   { label: "PRODUCTS", href: "/product" },
   { label: "ADD-ON", href: "/addon" },
+  { label: "CASE STUDIES", href: "/case-studies" },
   { label: "GALLERY", href: "/galeri" },
   { label: "BLOG", href: "/blog" },
   { label: "CONTACT", href: "/kontak" },
